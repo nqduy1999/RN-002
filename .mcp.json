@@ -6,6 +6,13 @@
                 "@eslint/mcp@latest"
             ],
             "env": {}
+        },
+        "figma": {
+            "command": "npx",
+            "args": [
+                "@figma/mcp@latest"
+            ],
+            "env": {}
         }
     }
 }
