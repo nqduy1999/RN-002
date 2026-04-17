@@ -10,7 +10,8 @@
       "@hooks/*": ["./hooks/*"],
       "@constants/*": ["./constants/*"],
       "@resources/*": ["./resources/*"],
-      "@redux/*": ["./redux/*"]
+      "@redux/*": ["./redux/*"],
+      "@services/*": ["./services/*"]
     },
     "moduleResolution": "node",
     "allowJs": true,

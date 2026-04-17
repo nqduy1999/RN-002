@@ -1,21 +1,19 @@
-import actions from './actions';
-import * as languages from '@services/local/languages';
-import {switchLanguage} from '@resources/string/locale/LanguageServices';
-import VersionCheck from 'react-native-version-check';
-import {getAppstoreAppMetadata} from 'react-native-appstore-version-checker';
-import {Platform, Alert, PermissionsAndroid} from 'react-native';
-import Config from 'react-native-config';
-import authTokens from '@services/local/auth-tokens';
-import moment from 'moment';
-import flexibleBenefitsOperations from '@redux/flexibleBenefits/operations';
-import {isUnauthorized, isAdminChangePassword} from '../helpers/errorHandler';
-import recognitionOperations from '@redux/recognition/operations';
-import {renderText} from '@common/components/StringHelper';
-import {captureScreen} from 'react-native-view-shot';
+import { renderText } from '@common/components/StringHelper';
 import CameraRoll from '@react-native-community/cameraroll';
-import semver from 'semver';
 import authApi from '@redux/auth/api';
+import flexibleBenefitsOperations from '@redux/flexibleBenefits/operations';
+import recognitionOperations from '@redux/recognition/operations';
 import BuildVersion from '@resources/build_version/BuildVersion';
+import { switchLanguage } from '@resources/string/locale/LanguageServices';
+import authTokens from '@services/local/auth-tokens';
+import * as languages from '@services/local/languages';
+import moment from 'moment';
+import { Alert, PermissionsAndroid, Platform } from 'react-native';
+import VersionCheck from 'react-native-version-check';
+import { captureScreen } from 'react-native-view-shot';
+import semver from 'semver';
+import { isAdminChangePassword } from '../helpers/errorHandler';
+import actions from './actions';
 
 const updateLanguage = language => async (dispatch, getState) => {
   if (language === getState().app.language) {
@@ -39,14 +37,14 @@ const getLanguage = () => async dispatch => {
 };
 
 const showLoading = () => (dispatch, getState) => {
-  const {isLoading} = getState().app;
+  const { isLoading } = getState().app;
   if (!isLoading) {
     dispatch(actions.showLoading());
   }
 };
 
 const hideLoading = () => (dispatch, getState) => {
-  const {isLoading} = getState().app;
+  const { isLoading } = getState().app;
   if (isLoading) {
     dispatch(actions.hideLoading());
   }
@@ -67,7 +65,7 @@ const getVersionWithDepth = (version, depth) => {
   );
 };
 
-const setGetReconiteOptStatus = (status) => (dispatch ) => dispatch(actions.setGetReconiteOptStatus(status));
+const setGetReconiteOptStatus = (status) => (dispatch) => dispatch(actions.setGetReconiteOptStatus(status));
 
 const showRating = () => async dispatch => {
   var token = await authTokens.getAccessToken();
@@ -151,7 +149,7 @@ const getVersionApp = () => async dispatch => {
 };
 
 const setRatingApp = rating => (dispatch, getState) => {
-  var {ratingApp} = getState().app;
+  var { ratingApp } = getState().app;
 
   var ratingAppNew = {
     ...ratingApp,
@@ -186,7 +184,7 @@ const screenShot = async () => {
     const permission2 = PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES;
 
     const hasPermission = (await PermissionsAndroid.check(permission1)) &&
-                          (await PermissionsAndroid.check(permission2));
+      (await PermissionsAndroid.check(permission2));
     if (hasPermission) {
       return true;
     }
@@ -205,7 +203,7 @@ const screenShot = async () => {
       quality: 1,
     });
 
-    CameraRoll.save(uri, {type: 'photo'});
+    CameraRoll.save(uri, { type: 'photo' });
     Alert.alert('', renderText('SCREEN_IS_CAPTURED'));
   } catch (error) {
     console.log(error);
