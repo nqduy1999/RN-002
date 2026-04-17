@@ -9,7 +9,8 @@
       "@common/*": ["./common/*"],
       "@hooks/*": ["./hooks/*"],
       "@constants/*": ["./constants/*"],
-      "@resources/*": ["./resources/*"]
+      "@resources/*": ["./resources/*"],
+      "@redux/*": ["./redux/*"]
     },
     "moduleResolution": "node",
     "allowJs": true,

@@ -26,7 +26,7 @@ module.exports = defineConfig([
     },
     rules: {
       'import/no-unresolved': ['error', {
-        ignore: ['^@common/', '^@assets/', '^@hooks/', '^@constants/'],
+        ignore: ['^@common/', '^@assets/', '^@hooks/', '^@constants/', '^@resources/', '^@redux/'],
       }],
     },
   },
