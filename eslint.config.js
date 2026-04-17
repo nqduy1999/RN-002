@@ -19,14 +19,15 @@ module.exports = defineConfig([
       'import/ignore': ['node_modules'],
       'import/extensions': ['.js', '.jsx', '.json'],
       'import/resolver': {
-        typescript: {
-          project: './jsconfig.json',
-          alwaysTryTypes: true,
-        },
         node: {
           extensions: ['.js', '.jsx', '.json'],
         },
       },
+    },
+    rules: {
+      'import/no-unresolved': ['error', {
+        ignore: ['^@common/', '^@assets/', '^@hooks/', '^@constants/'],
+      }],
     },
   },
 ]);
